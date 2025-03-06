@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "ddjd_pro1.sln"
+    "dotnet.defaultSolution": "feup-ddjd.sln"
 }
