@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      vecteezy_isolated-dirt-ground-with-green-grass__0: 6771570283016022239
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
