@@ -25,7 +25,7 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKey(KeyCode.A)) moveInput = -1f;
 
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
-        animator.SetFloat("xVelocity", Mathf.Abs(rb.linearVelocity.x)); // Corrected from Math.Abs
+        animator.SetFloat("xVelocity", Mathf.Abs(rb.linearVelocity.x)); 
 
         // Flip Sprite Based on Movement
         if (moveInput > 0 && !isFacingRight)
@@ -33,10 +33,10 @@ public class PlayerScript : MonoBehaviour
         else if (moveInput < 0 && isFacingRight)
             Flip();
 
-        // Jump Mechanic (Fixed)
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded) // Fixed condition
+        // Jump Mechanic 
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded) 
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce); // Use velocity instead of linearVelocity
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce); 
             isGrounded = false;
             animator.SetBool("isJumping", true);
         }
@@ -54,7 +54,7 @@ public class PlayerScript : MonoBehaviour
     // Proper Ground Detection
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if (other.CompareTag("Ground")) // Ensure only ground sets isGrounded to true
+        if (other.CompareTag("Ground")) 
         {
             isGrounded = true;
             animator.SetBool("isJumping", false);
@@ -63,7 +63,7 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Ground")) // Ensure leaving ground sets isGrounded to false
+        if (other.CompareTag("Ground")) 
         {
             isGrounded = false;
             animator.SetBool("isJumping", true);
