@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {   
@@ -9,17 +10,30 @@ public class PlayerScript : MonoBehaviour
     private bool isFacingRight = true;
     private bool isGrounded = false;
     private Animator animator;
+    private GameObject nearbyWeapon = null;
+    public Transform weaponHoldPosition;
+    private GameObject equippedWeapon = null;
+
+    // UI Elements
+    public Image weaponIcon; 
+    public Text weaponText; 
+
+    // Shooting Variables
+    public GameObject bulletPrefab; 
+    public Transform shootPoint; 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         rb.freezeRotation = true;
+        
+        weaponIcon.gameObject.SetActive(false);
+        weaponText.gameObject.SetActive(false);
     }
 
     void Update()
     {
-        // Move Left & Right Smoothly
         float moveInput = 0f;
         if (Input.GetKey(KeyCode.D)) moveInput = 1f;
         if (Input.GetKey(KeyCode.A)) moveInput = -1f;
@@ -27,22 +41,27 @@ public class PlayerScript : MonoBehaviour
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
         animator.SetFloat("xVelocity", Mathf.Abs(rb.linearVelocity.x)); 
 
-        // Flip Sprite Based on Movement
-        if (moveInput > 0 && !isFacingRight)
-            Flip();
-        else if (moveInput < 0 && isFacingRight)
-            Flip();
+        if (moveInput > 0 && !isFacingRight) Flip();
+        else if (moveInput < 0 && isFacingRight) Flip();
 
-        // Jump Mechanic 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded) 
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce); 
             isGrounded = false;
             animator.SetBool("isJumping", true);
         }
+
+        if (Input.GetKeyDown(KeyCode.E) && nearbyWeapon != null)
+        {
+            PickUpWeapon(nearbyWeapon);
+        }
+
+        if (Input.GetMouseButtonDown(0) && equippedWeapon != null)
+        {
+            Shoot();
+        }
     }
 
-    // Flip the sprite when changing direction
     void Flip()
     {
         isFacingRight = !isFacingRight;
@@ -51,10 +70,13 @@ public class PlayerScript : MonoBehaviour
         transform.localScale = localScale;
     }
 
-    // Proper Ground Detection
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if (other.CompareTag("Ground")) 
+        if (other.CompareTag("Weapon")) 
+        {
+            nearbyWeapon = other.gameObject;
+        }
+        else if (other.CompareTag("Ground"))
         {
             isGrounded = true;
             animator.SetBool("isJumping", false);
@@ -63,10 +85,55 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Ground")) 
+        if (other.CompareTag("Weapon"))
+        {
+            nearbyWeapon = null;
+        }
+        else if (other.CompareTag("Ground"))
         {
             isGrounded = false;
             animator.SetBool("isJumping", true);
+        }
+    }
+
+    void PickUpWeapon(GameObject weapon)
+    {
+        Debug.Log("Picked up: " + weapon.name);
+
+        if (equippedWeapon != null)
+        {
+            Destroy(equippedWeapon);
+        }
+
+        equippedWeapon = Instantiate(weapon, weaponHoldPosition.position, Quaternion.identity);
+        equippedWeapon.transform.SetParent(weaponHoldPosition); 
+        equippedWeapon.transform.localPosition = Vector3.zero;
+        equippedWeapon.transform.localRotation = Quaternion.identity;
+        
+        if (equippedWeapon.GetComponent<Collider2D>())
+        {
+            equippedWeapon.GetComponent<Collider2D>().enabled = false;
+        }
+
+        Destroy(weapon);
+
+        weaponIcon.gameObject.SetActive(true);
+        weaponText.gameObject.SetActive(true);
+
+        weaponIcon.sprite = equippedWeapon.GetComponent<SpriteRenderer>().sprite;
+    }
+
+    void Shoot()
+    {
+        Debug.Log("Shooting!");
+
+
+        GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
+
+        if (bullet.TryGetComponent<Bullet>(out var bulletScript))
+        {
+            Vector2 shootDirection = isFacingRight ? Vector2.right : Vector2.left;
+            bulletScript.SetDirection(shootDirection);
         }
     }
 }
