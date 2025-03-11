@@ -28,7 +28,7 @@ public class SideDoor : MonoBehaviour
     {
         if (playerInRange)
         {
-            player.transform.position = exitPoint.position + new Vector3(0f, -1.32f, 0f); // Teleport the player
+            player.transform.position = exitPoint.position + new Vector3(0f, -1.07f, 0f); // Teleport the player
         }
     }
 }
