@@ -6,7 +6,6 @@ public class GuardAI : MonoBehaviour
     public float speed = 3f; 
     private Vector2 targetPoint;
     private bool chasingPlayer = false;
-
     public Transform player;
     public float detectionRange = 10f; 
     public LayerMask playerLayer;
@@ -16,6 +15,7 @@ public class GuardAI : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.freezeRotation = true;
 
         patrolPointA = pointA.position;
         patrolPointB = pointB.position;
@@ -71,7 +71,7 @@ public class GuardAI : MonoBehaviour
 
     void ChasePlayer()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * 1.5f * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * 1.2f * Time.deltaTime);
         
         if (Vector2.Distance(transform.position, player.position) > detectionRange + 2f)
         {
