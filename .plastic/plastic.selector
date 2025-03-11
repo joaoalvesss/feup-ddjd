@@ -1,0 +1,4 @@
+repository "ddjd_proj1/ddjd_pro1@6872731889142@cloud"
+  path "/"
+    br "/main"
+    co "/main"
