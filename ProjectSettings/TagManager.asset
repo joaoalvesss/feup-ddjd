@@ -7,22 +7,16 @@ TagManager:
   - Logic
   - Ground
   - Weapon
-  serializedVersion: 3
-  tags:
-  - Logic
-  - Ground
-  - Weapon
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Bird
   - Bullet
   - Water
   - UI
+  - UI
   - Weapon
   - Player
-  - 
   - 
   - 
   - 
