@@ -72,3 +72,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 .fake
+
+../.plastic/
+../Packages/manifest.json.private.0
+../Packages/packages-lock.json.private.0
