@@ -19,7 +19,9 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Player"))
+        Debug.Log("Bullet hit: " + collision.gameObject.name + " with tag: " + collision.gameObject.tag);
+
+        if (collision.CompareTag("Guard") || collision.CompareTag("Wall"))
         {
             Destroy(gameObject);
         }

@@ -39,21 +39,21 @@ public class GuardAI : MonoBehaviour
     void Patrol()
     {
         transform.position = Vector2.MoveTowards(transform.position, targetPoint, speed * Time.deltaTime);
-        Debug.Log("Patrolling... Target: " + targetPoint);
+        // Debug.Log("Patrolling... Target: " + targetPoint);
 
         if (Vector2.Distance(transform.position, targetPoint) < 2f)
         {   
-            Debug.Log("Switching target...");
+            // Debug.Log("Switching target...");
 
             if (targetPoint == patrolPointA)
             {
                 targetPoint = patrolPointB;
-                Debug.Log("Switching to B");
+                // Debug.Log("Switching to B");
             }
             else
             {
                 targetPoint = patrolPointA;
-                Debug.Log("Switching to A");
+                // Debug.Log("Switching to A"); 
             }
 
             FlipGuard();

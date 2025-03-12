@@ -468,9 +468,9 @@ GameObject:
   - component: {fileID: 57484181}
   - component: {fileID: 57484180}
   - component: {fileID: 57484184}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: stairs
-  m_TagString: Untagged
+  m_TagString: Strairs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -939,7 +939,6 @@ GameObject:
   m_Component:
   - component: {fileID: 198053691}
   - component: {fileID: 198053688}
-  - component: {fileID: 198053690}
   - component: {fileID: 198053689}
   m_Layer: 0
   m_Name: Office 1 Camera
@@ -1043,14 +1042,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &198053690
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198053687}
-  m_Enabled: 1
 --- !u!4 &198053691
 Transform:
   m_ObjectHideFlags: 0
@@ -1752,9 +1743,9 @@ GameObject:
   - component: {fileID: 584161050}
   - component: {fileID: 584161049}
   - component: {fileID: 584161048}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: stairsTop2
-  m_TagString: Untagged
+  m_TagString: Strairs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1878,8 +1869,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1623784137
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 8244818468645912451, guid: 2eb44e7e65282fb4f98ab2ef96157a00, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1923,7 +1914,7 @@ GameObject:
   - component: {fileID: 605016133}
   m_Layer: 3
   m_Name: Guard
-  m_TagString: Untagged
+  m_TagString: Guard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2138,7 +2129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 682115734}
   - component: {fileID: 682115731}
-  - component: {fileID: 682115733}
   - component: {fileID: 682115732}
   m_Layer: 0
   m_Name: Office 4 Camera
@@ -2242,14 +2232,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &682115733
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 682115730}
-  m_Enabled: 1
 --- !u!4 &682115734
 Transform:
   m_ObjectHideFlags: 0
@@ -2673,7 +2655,6 @@ GameObject:
   m_Component:
   - component: {fileID: 935573030}
   - component: {fileID: 935573027}
-  - component: {fileID: 935573029}
   - component: {fileID: 935573028}
   m_Layer: 0
   m_Name: Office 3 Camera
@@ -2777,14 +2758,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &935573029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 935573026}
-  m_Enabled: 1
 --- !u!4 &935573030
 Transform:
   m_ObjectHideFlags: 0
@@ -3208,7 +3181,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1299820591}
   - component: {fileID: 1299820588}
-  - component: {fileID: 1299820590}
   - component: {fileID: 1299820589}
   m_Layer: 0
   m_Name: Office 2 Camera
@@ -3312,14 +3284,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1299820590
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1299820587}
-  m_Enabled: 1
 --- !u!4 &1299820591
 Transform:
   m_ObjectHideFlags: 0
@@ -3547,7 +3511,7 @@ GameObject:
   - component: {fileID: 1512241231}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42376,9 +42340,9 @@ GameObject:
   - component: {fileID: 1610529445}
   - component: {fileID: 1610529444}
   - component: {fileID: 1610529443}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: stairsTop
-  m_TagString: Untagged
+  m_TagString: Strairs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42502,8 +42466,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1623784137
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 8244818468645912451, guid: 2eb44e7e65282fb4f98ab2ef96157a00, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -42541,7 +42505,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1628987410}
   - component: {fileID: 1628987407}
-  - component: {fileID: 1628987409}
   - component: {fileID: 1628987408}
   m_Layer: 0
   m_Name: Corridor Camera
@@ -42645,14 +42608,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1628987409
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1628987406}
-  m_Enabled: 1
 --- !u!4 &1628987410
 Transform:
   m_ObjectHideFlags: 0
@@ -42850,8 +42805,8 @@ GameObject:
   - component: {fileID: 1804562725}
   - component: {fileID: 1804562724}
   m_Layer: 0
-  m_Name: NewGrid
-  m_TagString: Untagged
+  m_Name: Grid
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43154,9 +43109,9 @@ GameObject:
   - component: {fileID: 1937421060}
   - component: {fileID: 1937421059}
   - component: {fileID: 1937421058}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: stairs2
-  m_TagString: Untagged
+  m_TagString: Strairs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43405,7 +43360,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -850, y: 456}
+  m_AnchoredPosition: {x: -850, y: 490}
   m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2108986621
@@ -43508,6 +43463,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8315477026227949605, guid: e5fb9ab51090e354e8c051ba3d6964d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592811478288084728, guid: e5fb9ab51090e354e8c051ba3d6964d6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592811478288084728, guid: e5fb9ab51090e354e8c051ba3d6964d6, type: 3}
+      propertyPath: m_SortingLayerID
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8839797866644260983, guid: e5fb9ab51090e354e8c051ba3d6964d6, type: 3}
