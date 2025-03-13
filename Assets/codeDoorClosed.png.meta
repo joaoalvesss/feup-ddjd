@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3a03a67cae304a24b868ff178fba8bdf
+guid: 1f814522291ec5f429a7f585c6d406bd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -548361080881072038
-    second: background_4_0
+      213: -5356365085844458023
+    second: codeDoorClosed_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: background_4_0
+      name: codeDoorClosed_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2080
-        height: 640
+        width: 20
+        height: 315
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a583f659084d368f0800000000000000
-      internalID: -548361080881072038
+      spriteID: 9d5bfea655e5aa5b0800000000000000
+      internalID: -5356365085844458023
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      background_4_0: -548361080881072038
+      codeDoorClosed_0: -5356365085844458023
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
