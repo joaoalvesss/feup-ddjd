@@ -4,17 +4,24 @@ using TMPro; // For TextMeshPro UI
 
 public class StickyNote : MonoBehaviour
 {
-    public GameObject stickyNoteUI; // Reference to the UI Panel
-    public TextMeshProUGUI codeText; // Text for the 4-digit code
+    public GameObject stickyNoteUI;
+    public TextMeshProUGUI codeText;
     private bool playerInRange = false;
     private string code;
 
+    public Door linkedDoor; // Reference to the door this note unlocks
+
     private void Start()
     {
-        // Generate a random 4-digit code (for example: 1234)
-        code = Random.Range(1000, 9999).ToString();
-        codeText.text = "Code: " + code; // Display the code
-        stickyNoteUI.SetActive(false); // Hide the note at the start
+        code = Random.Range(1000, 9999).ToString(); // Generate a random 4-digit code
+        codeText.text = "Code: " + code;
+
+        if (linkedDoor != null)
+        {
+            linkedDoor.SetCorrectCode(code); // Send the code to the door
+        }
+
+        stickyNoteUI.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -30,7 +37,7 @@ public class StickyNote : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
-            stickyNoteUI.SetActive(false); // Close the note if the player leaves
+            stickyNoteUI.SetActive(false);
         }
     }
 
@@ -38,12 +45,13 @@ public class StickyNote : MonoBehaviour
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            stickyNoteUI.SetActive(true); // Show the note
+            stickyNoteUI.SetActive(true);
         }
 
         if (stickyNoteUI.activeSelf && Input.GetKeyDown(KeyCode.Escape))
         {
-            stickyNoteUI.SetActive(false); // Hide the note when ESC is pressed
+            stickyNoteUI.SetActive(false);
         }
     }
 }
+
