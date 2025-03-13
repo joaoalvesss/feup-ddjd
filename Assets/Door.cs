@@ -14,16 +14,11 @@ public class Door : MonoBehaviour
     private bool playerInRange = false;
     private string correctCode;
     private Collider2D blockingCollider; 
-    private Collider2D triggerCollider; // Reference for the trigger collider
-
+    private Collider2D triggerCollider; 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-        // Find the blocking collider specifically
         blockingCollider = transform.Find("BlockingCollider").GetComponent<Collider2D>();
-
-        // Get the trigger collider attached to the main Door object
         triggerCollider = GetComponent<Collider2D>();
 
         codeInputUI.SetActive(false); 
@@ -45,7 +40,7 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && triggerCollider.enabled) // Prevent interaction if the trigger is disabled
+        if (other.CompareTag("Player") && triggerCollider.enabled) 
         {
             playerInRange = true;
             codeInputUI.SetActive(true);
@@ -83,7 +78,7 @@ public class Door : MonoBehaviour
         
         if (blockingCollider != null)
         {
-            blockingCollider.enabled = false; // ✅ Disable movement-blocking collider
+            blockingCollider.enabled = false; 
         }
         else
         {
@@ -92,7 +87,7 @@ public class Door : MonoBehaviour
 
         if (triggerCollider != null)
         {
-            triggerCollider.enabled = false; // ✅ Disable trigger collider so player can't interact again
+            triggerCollider.enabled = false; 
         }
         else
         {
