@@ -13,6 +13,7 @@ public class PlayerScript : MonoBehaviour
     private GameObject nearbyWeapon = null;
     public Transform weaponHoldPosition;
     private GameObject equippedWeapon = null;
+    private GameObject nearbyStickyNote = null;
 
     // UI Elements
     public Image weaponIcon; 
@@ -81,6 +82,10 @@ public class PlayerScript : MonoBehaviour
             isGrounded = true;
             animator.SetBool("isJumping", false);
         }
+            else if (other.CompareTag("StickyNote")) // Detect sticky note
+        {
+            nearbyStickyNote = other.gameObject;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -93,6 +98,10 @@ public class PlayerScript : MonoBehaviour
         {
             isGrounded = false;
             animator.SetBool("isJumping", true);
+        }
+            if (other.CompareTag("StickyNote"))
+        {
+            nearbyStickyNote = null; // Reset when leaving the sticky note area
         }
     }
 

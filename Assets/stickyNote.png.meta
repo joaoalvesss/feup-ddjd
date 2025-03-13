@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4fc04f24bf5e6d74f95c4464fbbaaec9
+guid: 992f3569fbf83054697800214e48eb1d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8826109872723766345
-    second: background_6_0
+      213: 6193930072001073865
+    second: "stickyNote\xBA_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: background_6_0
+      name: "stickyNote\xBA_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 520
-        height: 160
+        x: 64
+        y: 53
+        width: 5873
+        height: 5932
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7b35bbf55db538580800000000000000
-      internalID: -8826109872723766345
+      spriteID: 9c2db39659245f550800000000000000
+      internalID: 6193930072001073865
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      background_6_0: -8826109872723766345
+      "stickyNote\xBA_0": 6193930072001073865
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

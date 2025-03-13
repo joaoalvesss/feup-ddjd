@@ -10,6 +10,7 @@ TagManager:
   - Wall
   - Strairs
   - Guard
+  - StickyNote
   layers:
   - Default
   - TransparentFX
