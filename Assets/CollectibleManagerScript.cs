@@ -32,4 +32,13 @@ public class CollectibleManager : MonoBehaviour
             Debug.Log("Used unlockable item! Count is now: " + collectedCount);
         }
     }
+
+    public void GetKey()
+    {
+        if (collectedCount == 4) 
+        {
+            collectedCount++;
+            Debug.Log("Got key! Count is now: " + collectedCount);
+        }
+    }
 }

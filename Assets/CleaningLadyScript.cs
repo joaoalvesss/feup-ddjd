@@ -67,6 +67,8 @@ public class CleaningLady : MonoBehaviour
     private void GivePlayerReward()
     {
         Debug.Log("Player received the special object from the cleaning lady!");
+
+	CollectibleManager.Instance.GetKey();
         // Add logic to give the player the item
     }
 }
