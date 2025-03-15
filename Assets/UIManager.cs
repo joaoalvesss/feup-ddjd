@@ -47,8 +47,23 @@ public class UIManager : MonoBehaviour
 
     public void RetryGame()
     {
+        gameOverUI.SetActive(false); 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        StartCoroutine(ResetPlayerHealth());
     }
+
+    private IEnumerator ResetPlayerHealth()
+    {
+        yield return new WaitForSeconds(0.1f); 
+        PlayerHealth playerHealth = Object.FindFirstObjectByType<PlayerHealth>();
+        if (playerHealth != null)
+        {
+            playerHealth.ResetHealth(); 
+        }
+    }
+
+
+
 
     public void QuitGame()
     {
@@ -85,4 +100,7 @@ public class UIManager : MonoBehaviour
             dialogueBox.SetActive(false);
         }
     }
+
+
+
 }
