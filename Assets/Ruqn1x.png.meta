@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 43d6231bad362ae4eaedc5055f2c8017
+guid: 7b7fe5a3af6c4754299e6154014b7224
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1427952756033651373
-    second: soutosDoorClosed_0
+      213: -5231019959528406131
+    second: Ruqn1x_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: soutosDoorClosed_0
+      name: Ruqn1x_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 20
-        height: 315
+        width: 1734
+        height: 976
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: da20d6b477b11d310800000000000000
-      internalID: 1427952756033651373
+      spriteID: d83c45bdf0fa767b0800000000000000
+      internalID: -5231019959528406131
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      soutosDoorClosed_0: 1427952756033651373
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
