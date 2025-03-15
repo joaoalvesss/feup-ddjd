@@ -2,20 +2,24 @@ using UnityEngine;
 
 public class VisionCone : MonoBehaviour
 {
+    public float damage = 0.5f; 
+    public float damageCooldown = 1f; 
+    private bool canDamage = true; 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && canDamage)
         {
-            Debug.Log("Player detected! Alert triggered.");
-            // Add your alert logic here (e.g., start an alarm)
+            Debug.Log("Player detected! Losing a life.");
+            other.GetComponent<PlayerHealth>().TakeDamage(damage);
+            StartCoroutine(DamageCooldown()); 
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private System.Collections.IEnumerator DamageCooldown()
     {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("Player left vision area.");
-        }
+        canDamage = false;
+        yield return new WaitForSeconds(damageCooldown);
+        canDamage = true;
     }
 }

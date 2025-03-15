@@ -11,7 +11,7 @@ public class Door : MonoBehaviour
     public Sprite openDoorSprite; 
 
     private SpriteRenderer spriteRenderer;
-    private bool playerInRange = false;
+
     private string correctCode;
     private Collider2D blockingCollider; 
     private Collider2D triggerCollider; 
@@ -42,7 +42,6 @@ public class Door : MonoBehaviour
     {
         if (other.CompareTag("Player") && triggerCollider.enabled) 
         {
-            playerInRange = true;
             codeInputUI.SetActive(true);
             inputField.text = "";
             wrongCodeText.gameObject.SetActive(false);
@@ -53,7 +52,6 @@ public class Door : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerInRange = false;
             codeInputUI.SetActive(false); 
         }
     }
