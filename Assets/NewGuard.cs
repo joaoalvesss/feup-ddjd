@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class GuardAI : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class GuardAI : MonoBehaviour
     public LayerMask playerLayer;
     private Rigidbody2D rb;
     private Vector2 patrolPointA, patrolPointB; 
+    private bool isDead = false;
+
+    public Sprite deadSprite; // Assign in Inspector
+    public static event Action OnGuardDeath; // Event for notifying death
 
     void Start()
     {
@@ -25,6 +30,8 @@ public class GuardAI : MonoBehaviour
 
     void Update()
     {
+        if (isDead) return; // Stop movement if dead
+
         if (!chasingPlayer)
         {
             Patrol();
@@ -39,23 +46,10 @@ public class GuardAI : MonoBehaviour
     void Patrol()
     {
         transform.position = Vector2.MoveTowards(transform.position, targetPoint, speed * Time.deltaTime);
-        // Debug.Log("Patrolling... Target: " + targetPoint);
 
         if (Vector2.Distance(transform.position, targetPoint) < 2f)
         {   
-            // Debug.Log("Switching target...");
-
-            if (targetPoint == patrolPointA)
-            {
-                targetPoint = patrolPointB;
-                // Debug.Log("Switching to B");
-            }
-            else
-            {
-                targetPoint = patrolPointA;
-                // Debug.Log("Switching to A"); 
-            }
-
+            targetPoint = targetPoint == patrolPointA ? patrolPointB : patrolPointA;
             FlipGuard();
         }
     }
@@ -84,5 +78,23 @@ public class GuardAI : MonoBehaviour
         Vector3 scale = transform.localScale;
         scale.x *= -1; 
         transform.localScale = scale;
+    }
+
+    public void Die()
+    {
+        if (isDead) return; // Prevent multiple calls
+
+        isDead = true;
+        GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+        GetComponent<Rigidbody2D>().isKinematic = true;
+        GetComponent<SpriteRenderer>().sprite = deadSprite;
+
+	Collider2D[] colliders = GetComponents<Collider2D>();
+        foreach (Collider2D col in colliders)
+        {
+            col.enabled = false;
+        }
+
+        OnGuardDeath?.Invoke(); // Notify listeners (e.g., PlayerScript)
     }
 }
