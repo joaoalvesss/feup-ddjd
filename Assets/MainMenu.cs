@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        ShowMainMenu(); // Ensure main menu is shown first
+        ShowMainMenu(); // Show main menu at the start
     }
 
     private void HideAllPanels()
@@ -24,25 +24,25 @@ public class MainMenu : MonoBehaviour
     public void ShowMainMenu()
     {
         HideAllPanels();
-        mainMenuPanel.SetActive(true); // Only show the Main Menu
+        mainMenuPanel.SetActive(true);
     }
 
     public void ShowLevelSelect()
     {
         HideAllPanels();
-        levelSelectPanel.SetActive(true); // Show Level Select menu
+        levelSelectPanel.SetActive(true);
     }
 
     public void ShowLeaderboard()
     {
         HideAllPanels();
-        leaderboardPanel.SetActive(true); // Show Leaderboard menu
+        leaderboardPanel.SetActive(true);
     }
 
     public void ShowHowToPlay()
     {
         HideAllPanels();
-        howToPlayPanel.SetActive(true); // Show How to Play menu
+        howToPlayPanel.SetActive(true);
     }
 
     public void QuitGame()
@@ -53,6 +53,7 @@ public class MainMenu : MonoBehaviour
 
     public void LoadLevel(string levelName)
     {
+        Debug.Log("Loading Level: " + levelName);
         SceneManager.LoadScene(levelName);
     }
 }
