@@ -17,6 +17,8 @@ public class GuardAI : MonoBehaviour
     public Sprite deadSprite; // Assign in Inspector
     public static event Action OnGuardDeath; // Event for notifying death
 
+    public GameObject cardPrefab;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -89,10 +91,17 @@ public class GuardAI : MonoBehaviour
         GetComponent<Rigidbody2D>().isKinematic = true;
         GetComponent<SpriteRenderer>().sprite = deadSprite;
 
+	transform.position = new Vector2(transform.position.x, transform.position.y - 2f); // Set Y to -1
+
 	Collider2D[] colliders = GetComponents<Collider2D>();
         foreach (Collider2D col in colliders)
         {
             col.enabled = false;
+        }
+
+	if (cardPrefab != null)
+        {
+            Instantiate(cardPrefab, transform.position, Quaternion.identity);
         }
 
         OnGuardDeath?.Invoke(); // Notify listeners (e.g., PlayerScript)
