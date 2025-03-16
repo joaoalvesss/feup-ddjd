@@ -13,30 +13,36 @@ public class MainMenu : MonoBehaviour
         ShowMainMenu(); // Ensure main menu is shown first
     }
 
-    public void ShowMainMenu()
+    private void HideAllPanels()
     {
-        mainMenuPanel.SetActive(true);
+        mainMenuPanel.SetActive(false);
         levelSelectPanel.SetActive(false);
         leaderboardPanel.SetActive(false);
         howToPlayPanel.SetActive(false);
     }
 
+    public void ShowMainMenu()
+    {
+        HideAllPanels();
+        mainMenuPanel.SetActive(true); // Only show the Main Menu
+    }
+
     public void ShowLevelSelect()
     {
-        mainMenuPanel.SetActive(false);
-        levelSelectPanel.SetActive(true);
+        HideAllPanels();
+        levelSelectPanel.SetActive(true); // Show Level Select menu
     }
 
     public void ShowLeaderboard()
     {
-        mainMenuPanel.SetActive(false);
-        leaderboardPanel.SetActive(true);
+        HideAllPanels();
+        leaderboardPanel.SetActive(true); // Show Leaderboard menu
     }
 
     public void ShowHowToPlay()
     {
-        mainMenuPanel.SetActive(false);
-        howToPlayPanel.SetActive(true);
+        HideAllPanels();
+        howToPlayPanel.SetActive(true); // Show How to Play menu
     }
 
     public void QuitGame()
