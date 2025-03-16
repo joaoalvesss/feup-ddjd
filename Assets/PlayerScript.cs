@@ -14,6 +14,8 @@ public class PlayerScript : MonoBehaviour
     public Transform weaponHoldPosition;
     private GameObject equippedWeapon = null;
     private GameObject nearbyStickyNote = null;
+    private GameObject nearbyCard = null;
+    private bool hasCard = false;
 
     // UI Elements
     public Image weaponIcon; 
@@ -61,6 +63,10 @@ public class PlayerScript : MonoBehaviour
         {
             Shoot();
         }
+	if (Input.GetKeyDown(KeyCode.E) && nearbyCard != null)
+        {
+            PickUpCard();
+        }
     }
 
     void Flip()
@@ -86,6 +92,19 @@ public class PlayerScript : MonoBehaviour
         {
             nearbyStickyNote = other.gameObject;
         }
+        else if (other.CompareTag("Card"))
+        {
+            nearbyCard = other.gameObject; // Store the card reference
+            Debug.Log("Press E to pick up the card.");
+        }
+	else if (other.CompareTag("Guard")) // Player touched the guard
+        {
+            PlayerHealth playerHealth = GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(3);
+            }
+    }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -102,6 +121,10 @@ public class PlayerScript : MonoBehaviour
             if (other.CompareTag("StickyNote"))
         {
             nearbyStickyNote = null; // Reset when leaving the sticky note area
+        }
+        else if (other.CompareTag("Card"))
+        {
+            nearbyCard = null; // Reset when leaving the card area
         }
     }
 
@@ -166,5 +189,18 @@ public class PlayerScript : MonoBehaviour
             weaponIcon.gameObject.SetActive(false);
             weaponText.gameObject.SetActive(false);
         }
+    }
+
+    void PickUpCard()
+    {
+        hasCard = true;
+        Debug.Log("Picked up the card!");
+        Destroy(nearbyCard); // Remove the card from the scene
+        nearbyCard = null; // Clear reference
+    }
+
+    public bool HasCard()
+    {
+        return hasCard;
     }
 }
