@@ -21,10 +21,15 @@ public class Bullet : MonoBehaviour
     {
         Debug.Log("Bullet hit: " + collision.gameObject.name + " with tag: " + collision.gameObject.tag);
 
-        if (collision.CompareTag("Guard") || collision.CompareTag("Wall"))
-        {
-            Destroy(gameObject);
-        }
+        if (collision.CompareTag("Guard"))
+    	{
+    	    collision.GetComponent<GuardAI>().Die(); // Call the Die method
+    	    Destroy(gameObject); // Destroy the bullet
+    	}
+    	else if (collision.CompareTag("Wall"))
+    	{
+    	    Destroy(gameObject);
+    	}
     }
 
     void Start()

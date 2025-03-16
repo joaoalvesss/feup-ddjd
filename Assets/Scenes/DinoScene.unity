@@ -4352,6 +4352,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  deadSprite: {fileID: -2003590305851965312, guid: fe7daa133a634c8498a46f30f9abf582, type: 3}
 --- !u!70 &605016134
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -69780,6 +69781,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1040667408960566445, guid: e5fb9ab51090e354e8c051ba3d6964d6, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5012390454633609139, guid: e5fb9ab51090e354e8c051ba3d6964d6, type: 3}
       propertyPath: m_Name
       value: Bullet

@@ -145,4 +145,26 @@ public class PlayerScript : MonoBehaviour
             bulletScript.SetDirection(shootDirection);
         }
     }
+
+    void OnEnable()
+    {
+        GuardAI.OnGuardDeath += DropWeapon; // Subscribe to event
+    }
+
+    void OnDisable()
+    {
+        GuardAI.OnGuardDeath -= DropWeapon; // Unsubscribe to avoid memory leaks
+    }
+
+    void DropWeapon()
+    {
+        if (equippedWeapon != null)
+        {
+            Destroy(equippedWeapon);
+            equippedWeapon = null;
+
+            weaponIcon.gameObject.SetActive(false);
+            weaponText.gameObject.SetActive(false);
+        }
+    }
 }
