@@ -53,10 +53,8 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void LoadLevel(string levelName)
+    public void PlayGame()
     {
-        Debug.Log("Loading Level: " + levelName);
-        SceneManager.LoadScene(levelName);
-
+        SceneManager.LoadScene("DinoScene"); // Ensure the name matches exactly!
     }
 }
