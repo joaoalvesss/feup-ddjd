@@ -88,7 +88,7 @@ public class GuardAI : MonoBehaviour
 
         isDead = true;
         GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
-        GetComponent<Rigidbody2D>().isKinematic = true;
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         GetComponent<SpriteRenderer>().sprite = deadSprite;
 
 	transform.position = new Vector2(transform.position.x, transform.position.y - 2f); // Set Y to -1

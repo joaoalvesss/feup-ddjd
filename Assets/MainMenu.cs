@@ -8,6 +8,8 @@ public class MainMenu : MonoBehaviour
     public GameObject leaderboardPanel;
     public GameObject howToPlayPanel;
 
+    // public GameObject mainMenuCanvas;
+
     private void Start()
     {
         ShowMainMenu(); // Show main menu at the start
@@ -55,5 +57,6 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("Loading Level: " + levelName);
         SceneManager.LoadScene(levelName);
+
     }
 }
