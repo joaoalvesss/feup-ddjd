@@ -65560,6 +65560,7 @@ GameObject:
   - component: {fileID: 1909419388}
   - component: {fileID: 1909419387}
   - component: {fileID: 1909419391}
+  - component: {fileID: 1909419392}
   m_Layer: 0
   m_Name: CleaningLady
   m_TagString: Untagged
@@ -65642,7 +65643,7 @@ SpriteRenderer:
   m_SortingLayerID: 1593834263
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3106850296050324922, guid: 11fd2dedf99471d4e9ce56a02241cfcc, type: 3}
+  m_Sprite: {fileID: -3514445908107649643, guid: 5f17367be05e3034ab1adf429e6a7118, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -65662,8 +65663,8 @@ Transform:
   m_GameObject: {fileID: 1909419386}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 96, y: 32.23, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 95.77929, y: 29.10437, z: 0}
+  m_LocalScale: {x: 0.43, y: 0.43, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -65702,11 +65703,11 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -1, y: 0}
+  m_Offset: {x: 4, y: 4}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5, y: 6.4}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 10.62, y: 18.3}
     newSize: {x: 5, y: 6.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -65714,6 +65715,28 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 12, y: 7}
   m_EdgeRadius: 0
+--- !u!95 &1909419392
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909419386}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2410ea8daa5b9744e860a8a45b4f48e0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1917577524
 GameObject:
   m_ObjectHideFlags: 0
@@ -66488,7 +66511,7 @@ SpriteRenderer:
   m_SortingLayerID: 1593834263
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5356365085844458023, guid: 1f814522291ec5f429a7f585c6d406bd, type: 3}
+  m_Sprite: {fileID: 1427952756033651373, guid: 43d6231bad362ae4eaedc5055f2c8017, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -67298,11 +67321,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6456904721300147072, guid: 5323bca8a40ba0f4c9e05b8cb1ca6522, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6456904721300147072, guid: 5323bca8a40ba0f4c9e05b8cb1ca6522, type: 3}
       propertyPath: m_SortingLayerID
-      value: 1593834263
+      value: 1384147035
       objectReference: {fileID: 0}
     - target: {fileID: 7091554748675331181, guid: 5323bca8a40ba0f4c9e05b8cb1ca6522, type: 3}
       propertyPath: m_Name
