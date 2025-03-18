@@ -17,11 +17,9 @@ public class PlayerScript : MonoBehaviour
     private GameObject nearbyCard = null;
     private bool hasCard = false;
 
-    // UI Elements
     public Image weaponIcon; 
-    public Text weaponText; 
-
-    // Shooting Variables
+    public Text weaponText;
+    public Image cardIcon; 
     public GameObject bulletPrefab; 
     public Transform shootPoint; 
 
@@ -33,14 +31,15 @@ public class PlayerScript : MonoBehaviour
         
         weaponIcon.gameObject.SetActive(false);
         weaponText.gameObject.SetActive(false);
+        if (cardIcon != null) cardIcon.gameObject.SetActive(false); 
     }
 
     void Update()
     {
         if (PasswordPrompt.isPasswordPanelOpen) 
         {
-            rb.linearVelocity = Vector2.zero; // Stop movement
-            return; // Ignore movement input
+            rb.linearVelocity = Vector2.zero; 
+            return;
         }
         
         float moveInput = 0f;
@@ -69,7 +68,8 @@ public class PlayerScript : MonoBehaviour
         {
             Shoot();
         }
-	if (Input.GetKeyDown(KeyCode.E) && nearbyCard != null)
+
+        if (Input.GetKeyDown(KeyCode.E) && nearbyCard != null)
         {
             PickUpCard();
         }
@@ -94,23 +94,22 @@ public class PlayerScript : MonoBehaviour
             isGrounded = true;
             animator.SetBool("isJumping", false);
         }
-            else if (other.CompareTag("StickyNote")) // Detect sticky note
+        else if (other.CompareTag("StickyNote")) 
         {
             nearbyStickyNote = other.gameObject;
         }
         else if (other.CompareTag("Card"))
         {
-            nearbyCard = other.gameObject; // Store the card reference
+            nearbyCard = other.gameObject;
             Debug.Log("Press E to pick up the card.");
         }
-	else if (other.CompareTag("Guard")) // Player touched the guard
+        else if (other.CompareTag("Guard")) 
         {
-            PlayerHealth playerHealth = GetComponent<PlayerHealth>();
-            if (playerHealth != null)
+            if (TryGetComponent<PlayerHealth>(out var playerHealth))
             {
                 playerHealth.TakeDamage(3);
             }
-    }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -124,13 +123,13 @@ public class PlayerScript : MonoBehaviour
             isGrounded = false;
             animator.SetBool("isJumping", true);
         }
-            if (other.CompareTag("StickyNote"))
+        else if (other.CompareTag("StickyNote"))
         {
-            nearbyStickyNote = null; // Reset when leaving the sticky note area
+            nearbyStickyNote = null; 
         }
         else if (other.CompareTag("Card"))
         {
-            nearbyCard = null; // Reset when leaving the card area
+            nearbyCard = null; 
         }
     }
 
@@ -145,9 +144,7 @@ public class PlayerScript : MonoBehaviour
 
         equippedWeapon = Instantiate(weapon, weaponHoldPosition.position, Quaternion.identity);
         equippedWeapon.transform.SetParent(weaponHoldPosition); 
-        equippedWeapon.transform.localPosition = Vector3.zero;
-        equippedWeapon.transform.localRotation = Quaternion.identity;
-        
+        equippedWeapon.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
         if (equippedWeapon.GetComponent<Collider2D>())
         {
             equippedWeapon.GetComponent<Collider2D>().enabled = false;
@@ -164,8 +161,6 @@ public class PlayerScript : MonoBehaviour
     void Shoot()
     {
         Debug.Log("Shooting!");
-
-
         GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
 
         if (bullet.TryGetComponent<Bullet>(out var bulletScript))
@@ -177,12 +172,12 @@ public class PlayerScript : MonoBehaviour
 
     void OnEnable()
     {
-        GuardAI.OnGuardDeath += DropWeapon; // Subscribe to event
+        GuardAI.OnGuardDeath += DropWeapon; 
     }
 
     void OnDisable()
     {
-        GuardAI.OnGuardDeath -= DropWeapon; // Unsubscribe to avoid memory leaks
+        GuardAI.OnGuardDeath -= DropWeapon; 
     }
 
     void DropWeapon()
@@ -201,12 +196,26 @@ public class PlayerScript : MonoBehaviour
     {
         hasCard = true;
         Debug.Log("Picked up the card!");
-        Destroy(nearbyCard); // Remove the card from the scene
-        nearbyCard = null; // Clear reference
+        Destroy(nearbyCard);
+        nearbyCard = null;
+
+        if (cardIcon != null)
+        {
+            cardIcon.gameObject.SetActive(true);
+        }
     }
 
     public bool HasCard()
     {
         return hasCard;
+    }
+
+    public void DropCard()
+    {
+        // hasCard = false;
+        if (cardIcon != null)
+        {
+            cardIcon.gameObject.SetActive(false);
+        }
     }
 }

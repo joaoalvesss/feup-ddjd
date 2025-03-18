@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SideDoor : MonoBehaviour
 {
-    public Transform exitPoint; // Set this to where the player should appear after using the stairs
+    public Transform exitPoint; 
     private bool playerInRange = false;
     private GameObject player;
 
@@ -28,7 +28,7 @@ public class SideDoor : MonoBehaviour
     {
         if (playerInRange)
         {
-            player.transform.position = exitPoint.position + new Vector3(0f, -1.07f, 0f); // Teleport the player
+            player.transform.position = exitPoint.position + new Vector3(0f, -1.07f, 0f); 
         }
     }
 }

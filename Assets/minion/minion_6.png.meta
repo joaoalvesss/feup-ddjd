@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      minion_6_0: 8227902286335845178
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

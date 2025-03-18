@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-    public float pickupRadius = 1.5f; // How close the player needs to be
+    public float pickupRadius = 1.5f; 
     private Transform player;
 
     private void Start()
@@ -22,10 +22,10 @@ public class Collectible : MonoBehaviour
     {
         Debug.Log("Collectible picked up!");
 	UIManager.Instance.AddScore(500);
-        Destroy(gameObject); // Remove the collectible
+        Destroy(gameObject); 
     }
 
-    // Optional: visualize the pickup range in the editor
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;

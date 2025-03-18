@@ -8,11 +8,9 @@ public class MainMenu : MonoBehaviour
     public GameObject leaderboardPanel;
     public GameObject howToPlayPanel;
 
-    // public GameObject mainMenuCanvas;
-
     private void Start()
     {
-        ShowMainMenu(); // Show main menu at the start
+        ShowMainMenu(); 
     }
 
     private void HideAllPanels()
@@ -55,6 +53,6 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("DinoScene"); // Ensure the name matches exactly!
+        SceneManager.LoadScene("DinoScene");
     }
 }

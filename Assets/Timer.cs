@@ -6,7 +6,7 @@ public class Timer : MonoBehaviour
     public Text timerText;
     private float elapsedTime = 0f;
 
-    public static Timer Instance; // Singleton instance
+    public static Timer Instance; 
 
     private void Awake()
     {

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class KeycardDoor: MonoBehaviour
 {
-    public Transform exitPoint; // Set this to where the player should appear after using the stairs
+    public Transform exitPoint; 
     private bool playerInRange = false;
     private GameObject player;
 
@@ -31,7 +31,8 @@ public class KeycardDoor: MonoBehaviour
 	    PlayerScript playerScript = player.GetComponent<PlayerScript>();
 	    if (playerScript != null && playerScript.HasCard())
 	    {
-                player.transform.position = exitPoint.position + new Vector3(0f, -1.07f, 0f); // Teleport the player
+            playerScript.DropCard();
+            player.transform.position = exitPoint.position + new Vector3(0f, -1.07f, 0f); 
 	    }
         }
     }

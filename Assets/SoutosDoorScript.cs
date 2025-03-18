@@ -6,7 +6,7 @@ public class SoutosDoor : MonoBehaviour
     public Sprite openDoorSprite;
 
     private SpriteRenderer spriteRenderer;
-    public BoxCollider2D solidCollider; // The blocking collider
+    public BoxCollider2D solidCollider; 
     private bool isUnlocked = false;
     private bool isOpen = false;
     private bool playerNearby = false;
@@ -14,21 +14,19 @@ public class SoutosDoor : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        solidCollider = GetComponent<BoxCollider2D>(); // The first (solid) collider
+        solidCollider = GetComponent<BoxCollider2D>(); 
 
         spriteRenderer.sprite = closedDoorSprite;
     }
 
     private void Update()
     {
-        // Unlock the door when collectibles reach 5
         if (!isUnlocked && CollectibleManager.Instance.CollectedCount >= 5)
         {
             isUnlocked = true;
             Debug.Log("Door is now unlocked!");
         }
 
-        // Player can only open the door when nearby and unlocked
         if (isUnlocked && !isOpen && playerNearby && Input.GetKeyDown(KeyCode.E))
         {
             OpenDoor();
@@ -41,7 +39,7 @@ public class SoutosDoor : MonoBehaviour
 
 	if (openDoorSprite != null && spriteRenderer != null)
     	{
-    	    spriteRenderer.sprite = openDoorSprite; // Change sprite
+    	    spriteRenderer.sprite = openDoorSprite; 
 	    transform.position += new Vector3(-2.25f, 0f, 0f);
     	    Debug.Log("Door is now open! Sprite changed.");
     	}
@@ -51,7 +49,7 @@ public class SoutosDoor : MonoBehaviour
     	}
 
         Debug.Log("Door is now open!");
-        solidCollider.enabled = false; // Disables the blocking collider so the player can pass
+        solidCollider.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

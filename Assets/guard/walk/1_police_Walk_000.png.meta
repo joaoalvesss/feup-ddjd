@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      1_police_Walk_000_0: -4704775867800309373
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
