@@ -932,7 +932,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "This guy is screwed with LCOM and wants to steal the teacher\u2019s Moodle
     password to access the test. But to get there, he must relive the experiences
-    from the course.If he survives, maybe he\u2019ll earn the right to cheat\u2026
+    from the course. If he survives, maybe he\u2019ll earn the right to cheat\u2026
     or just drop out."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

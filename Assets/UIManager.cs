@@ -7,18 +7,21 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    public TextMeshProUGUI livesText; 
-    public GameObject gameOverUI; 
+    public TextMeshProUGUI livesText;
+    public GameObject gameOverUI;
 
     public GameObject dialogueBox;
     public TextMeshProUGUI dialogueText;
+
+    public TextMeshProUGUI scoreText;
+    private int currentScore = 0;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); 
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -37,9 +40,28 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void AddScore(int points)
+    {
+        currentScore += points;
+        UpdateScoreUI();
+    }
+
+    private void UpdateScoreUI()
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = "Score: " + currentScore;
+        }
+    }
+
+    public int GetFinalScore()
+    {
+        return currentScore;
+    }
+
     public void ShowGameOver()
     {
-        if (gameOverUI != null) 
+        if (gameOverUI != null)
         {
             gameOverUI.SetActive(true);
         }
@@ -47,23 +69,20 @@ public class UIManager : MonoBehaviour
 
     public void RetryGame()
     {
-        gameOverUI.SetActive(false); 
+        gameOverUI.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         StartCoroutine(ResetPlayerHealth());
     }
 
     private IEnumerator ResetPlayerHealth()
     {
-        yield return new WaitForSeconds(0.1f); 
+        yield return new WaitForSeconds(0.1f);
         PlayerHealth playerHealth = Object.FindFirstObjectByType<PlayerHealth>();
         if (playerHealth != null)
         {
-            playerHealth.ResetHealth(); 
+            playerHealth.ResetHealth();
         }
     }
-
-
-
 
     public void QuitGame()
     {
@@ -92,7 +111,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-
     public void HideDialogue()
     {
         if (dialogueBox != null)
@@ -100,7 +118,4 @@ public class UIManager : MonoBehaviour
             dialogueBox.SetActive(false);
         }
     }
-
-
-
 }

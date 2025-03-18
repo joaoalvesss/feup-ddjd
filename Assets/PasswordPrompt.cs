@@ -1,16 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PasswordPrompt : MonoBehaviour
 {
-    public GameObject passwordPanel; 
-    public TMP_InputField passwordInput; 
+    public GameObject passwordPanel;
+    public GameObject winScreen;
+    public TMP_InputField passwordInput;
     public TextMeshProUGUI warningText;
-    public string correctPassword = "I<3minix"; 
-    private bool playerInRange = false;
+    public TextMeshProUGUI finalScoreText;
     
-    public static bool isPasswordPanelOpen = false; // NEW: Track if panel is open
+    public string correctPassword = "I<3minix";
+    private bool playerInRange = false;
+
+    public static bool isPasswordPanelOpen = false;
 
     private void Update()
     {
@@ -27,9 +31,9 @@ public class PasswordPrompt : MonoBehaviour
     private void OpenPasswordPanel()
     {
         passwordPanel.SetActive(true);
-        passwordInput.text = ""; 
-        warningText.gameObject.SetActive(false); 
-        isPasswordPanelOpen = true; 
+        passwordInput.text = "";
+        warningText.gameObject.SetActive(false);
+        isPasswordPanelOpen = true;
     }
 
     public void CheckPassword()
@@ -38,7 +42,7 @@ public class PasswordPrompt : MonoBehaviour
         {
             Debug.Log("Password Correct! Unlocking...");
             passwordPanel.SetActive(false);
-            UnlockObject(); 
+            ShowWinScreen();
         }
         else
         {
@@ -47,17 +51,28 @@ public class PasswordPrompt : MonoBehaviour
         }
     }
 
-    private void UnlockObject()
+    private void ShowWinScreen()
     {
-        Debug.Log("Object unlocked! Implement unlock logic here.");
-        // Add unlock logic here
+        winScreen.SetActive(true);
+        isPasswordPanelOpen = true;
+
+        int finalScore = UIManager.Instance.GetFinalScore();
+        if (finalScoreText != null)
+        {
+            finalScoreText.text = "Score: " + finalScore;
+        }
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     private void ClosePasswordPanel()
     {
         passwordPanel.SetActive(false);
         warningText.gameObject.SetActive(false);
-        isPasswordPanelOpen = false; 
+        isPasswordPanelOpen = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -74,7 +89,7 @@ public class PasswordPrompt : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
-            ClosePasswordPanel(); 
+            ClosePasswordPanel();
         }
     }
 }
