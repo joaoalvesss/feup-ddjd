@@ -108,11 +108,12 @@ public class GuardAI : MonoBehaviour
         if (isDead) return; // Prevent multiple calls
 
         isDead = true;
+	animator.enabled = false;
         GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         GetComponent<SpriteRenderer>().sprite = deadSprite;
 
-	transform.position = new Vector2(transform.position.x, transform.position.y - 2f); // Set Y to -1
+	transform.position = new Vector2(transform.position.x, transform.position.y - 3f); // Set Y to -1
 
 	Collider2D[] colliders = GetComponents<Collider2D>();
         foreach (Collider2D col in colliders)
@@ -122,7 +123,8 @@ public class GuardAI : MonoBehaviour
 
 	if (cardPrefab != null)
         {
-            Instantiate(cardPrefab, transform.position, Quaternion.identity);
+            Vector2 cardSpawnPosition = new Vector2(transform.position.x - 1f, transform.position.y);
+	    Instantiate(cardPrefab, cardSpawnPosition, Quaternion.identity);
         }
 
         OnGuardDeath?.Invoke(); // Notify listeners (e.g., PlayerScript)
