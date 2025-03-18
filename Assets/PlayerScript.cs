@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PlayerScript : MonoBehaviour
 {   
@@ -108,9 +109,23 @@ public class PlayerScript : MonoBehaviour
             PlayerHealth playerHealth = GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                playerHealth.TakeDamage(3);
+		animator.SetTrigger("Die"); // Play death animation
+                rb.linearVelocity = Vector2.zero; // Stop movement
+                rb.bodyType = RigidbodyType2D.Kinematic; // Disable physics movement
+                this.enabled = false;
+		transform.position = new Vector2(transform.position.x, transform.position.y - 1.5f);
+		StartCoroutine(WaitForDeathAnimation());
             }
     }
+    }
+
+    private IEnumerator WaitForDeathAnimation()
+    {
+        // Wait for a few seconds before transitioning to Game Over
+        yield return new WaitForSeconds(0.7f); // Adjust time as needed (e.g., 2 seconds)
+
+	PlayerHealth playerHealth = GetComponent<PlayerHealth>();
+        playerHealth.TakeDamage(3);
     }
 
     private void OnTriggerExit2D(Collider2D other)
