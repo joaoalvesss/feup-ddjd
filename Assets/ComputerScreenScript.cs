@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class ComputerScreen : MonoBehaviour
 {
-    public GameObject zoomedInScreen; // Assign the UI Image in Inspector
+    public GameObject zoomedInScreen; 
     private bool playerNearby = false;
     private bool isViewingScreen = false;
 
     private void Update()
     {
-        // Player presses E to open screen
+        
         if (playerNearby && Input.GetKeyDown(KeyCode.E) && !isViewingScreen)
         {
             ShowScreen();
         }
         
-        // Player presses Esc to close screen
+     
         if (isViewingScreen && Input.GetKeyDown(KeyCode.Escape))
         {
             HideScreen();
@@ -24,15 +24,15 @@ public class ComputerScreen : MonoBehaviour
     private void ShowScreen()
     {
         isViewingScreen = true;
-        zoomedInScreen.SetActive(true); // Show zoomed-in image
-        Time.timeScale = 0f; // Pause the game
+        zoomedInScreen.SetActive(true); 
+        Time.timeScale = 0f; 
     }
 
     private void HideScreen()
     {
         isViewingScreen = false;
-        zoomedInScreen.SetActive(false); // Hide zoomed-in image
-        Time.timeScale = 1f; // Resume game
+        zoomedInScreen.SetActive(false); 
+        Time.timeScale = 1f; 
     }
 
     private void OnTriggerEnter2D(Collider2D other)

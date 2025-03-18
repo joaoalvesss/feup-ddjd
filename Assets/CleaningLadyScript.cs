@@ -7,7 +7,6 @@ public class CleaningLady : MonoBehaviour
 
     private void Update()
     {
-        // Show dialogue when pressing E near the NPC
         if (isPlayerNear && Input.GetKeyDown(KeyCode.E))
         {
             if (!isTalking)
@@ -68,7 +67,6 @@ public class CleaningLady : MonoBehaviour
     {
         Debug.Log("Player received the special object from the cleaning lady!");
 
-	CollectibleManager.Instance.GetKey();
-        // Add logic to give the player the item
+	    CollectibleManager.Instance.GetKey();
     }
 }

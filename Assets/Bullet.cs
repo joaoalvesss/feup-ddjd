@@ -23,8 +23,8 @@ public class Bullet : MonoBehaviour
 
         if (collision.CompareTag("Guard"))
     	{
-    	    collision.GetComponent<GuardAI>().Die(); // Call the Die method
-    	    Destroy(gameObject); // Destroy the bullet
+    	    collision.GetComponent<GuardAI>().Die(); 
+    	    Destroy(gameObject); 
     	}
     	else if (collision.CompareTag("Wall"))
     	{

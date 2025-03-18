@@ -7,24 +7,24 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
-        currentLives = maxLives; // Initialize health on awake
+        currentLives = maxLives;
     }
 
     private void Start()
     {
-        UIManager.Instance.UpdateLives(currentLives); // Ensure UI updates at the start
+        UIManager.Instance.UpdateLives(currentLives); 
     }
 
     private void OnEnable()
     {
-        UIManager.Instance.UpdateLives(currentLives); // Update UI every time player respawns
+        UIManager.Instance.UpdateLives(currentLives); 
     }
 
 
     public void TakeDamage(float damage)
     {
         currentLives -= damage;
-        UIManager.Instance.UpdateLives(currentLives); // UI Update BEFORE checking Game Over
+        UIManager.Instance.UpdateLives(currentLives);
 
         Debug.Log("Lives Left: " + currentLives);
 
@@ -32,7 +32,7 @@ public class PlayerHealth : MonoBehaviour
         {
             Debug.Log("Game Over!");
             UIManager.Instance.ShowGameOver(); 
-            Invoke(nameof(DisablePlayer), 1f); // Wait 1 second before deactivating player
+            Invoke(nameof(DisablePlayer), 1f); 
         }
     }
 

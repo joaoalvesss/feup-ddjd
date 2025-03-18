@@ -9,16 +9,16 @@ public class StickyNote : MonoBehaviour
     private bool playerInRange = false;
     private string code;
 
-    public Door linkedDoor; // Reference to the door this note unlocks
+    public Door linkedDoor; 
 
     private void Start()
     {
-        code = Random.Range(1000, 9999).ToString(); // Generate a random 4-digit code
+        code = Random.Range(1000, 9999).ToString(); 
         codeText.text = "Code: " + code;
 
         if (linkedDoor != null)
         {
-            linkedDoor.SetCorrectCode(code); // Send the code to the door
+            linkedDoor.SetCorrectCode(code);
         }
 
         stickyNoteUI.SetActive(false);

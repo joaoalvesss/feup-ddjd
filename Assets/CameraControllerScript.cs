@@ -7,12 +7,11 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        // Ensure only one camera starts active
         foreach (Camera cam in cameras)
         {
             cam.enabled = false;
         }
-        cameras[0].enabled = true; // Start with the first camera
+        cameras[0].enabled = true; 
     }
 
     private void Update()
@@ -32,7 +31,7 @@ public class CameraController : MonoBehaviour
         Vector3 viewportPos = cam.WorldToViewportPoint(player.position);
         return viewportPos.x >= 0 && viewportPos.x <= 1 &&
                viewportPos.y >= 0 && viewportPos.y <= 1 &&
-               viewportPos.z > 0; // Ensure player is in front of camera
+               viewportPos.z > 0; 
     }
 
     private void SwitchToCamera(Camera cam)

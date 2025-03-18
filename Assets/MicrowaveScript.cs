@@ -5,7 +5,7 @@ public class Microwave : MonoBehaviour
     private bool isPlayerNear = false;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerNear) // Change "U" to whatever key you want
+        if (Input.GetKeyDown(KeyCode.E) && isPlayerNear)
         {
             CollectibleManager.Instance.UseUnlockableItem();
         }

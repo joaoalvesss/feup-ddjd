@@ -14,8 +14,8 @@ public class GuardAI : MonoBehaviour
     private Vector2 patrolPointA, patrolPointB; 
     private bool isDead = false;
 
-    public Sprite deadSprite; // Assign in Inspector
-    public static event Action OnGuardDeath; // Event for notifying death
+    public Sprite deadSprite; 
+    public static event Action OnGuardDeath; 
 
     public GameObject cardPrefab;
 
@@ -35,7 +35,7 @@ public class GuardAI : MonoBehaviour
 
     void Update()
     {
-        if (isDead) return; // Stop movement if dead
+        if (isDead) return; 
 
         if (!chasingPlayer)
         {
@@ -54,7 +54,6 @@ public class GuardAI : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, targetPoint, speed * Time.deltaTime);
 
-        // Determine if we need to flip
         if ((targetPoint.x > transform.position.x && transform.localScale.x < 0) ||
             (targetPoint.x < transform.position.x && transform.localScale.x > 0))
         {
@@ -80,16 +79,13 @@ public class GuardAI : MonoBehaviour
     {
         Vector2 direction = (player.position - transform.position).normalized;
 
-        // Move towards the player
         transform.position = Vector2.MoveTowards(transform.position, player.position, speed * 1.2f * Time.deltaTime);
-    
-        // Flip the guard if moving in the opposite direction
+
         if ((direction.x > 0 && transform.localScale.x < 0) || (direction.x < 0 && transform.localScale.x > 0))
         {
             FlipGuard();
         }
 
-        // Stop chasing if player is too far
         if (Vector2.Distance(transform.position, player.position) > detectionRange + 2f)
         {
             chasingPlayer = false; 
@@ -105,7 +101,7 @@ public class GuardAI : MonoBehaviour
 
     public void Die()
     {
-        if (isDead) return; // Prevent multiple calls
+        if (isDead) return; 
 
         isDead = true;
 	animator.enabled = false;
@@ -113,7 +109,7 @@ public class GuardAI : MonoBehaviour
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         GetComponent<SpriteRenderer>().sprite = deadSprite;
 
-	transform.position = new Vector2(transform.position.x, transform.position.y - 3f); // Set Y to -1
+	transform.position = new Vector2(transform.position.x, transform.position.y - 3f); 
 
 	Collider2D[] colliders = GetComponents<Collider2D>();
         foreach (Collider2D col in colliders)
@@ -127,6 +123,6 @@ public class GuardAI : MonoBehaviour
 	    Instantiate(cardPrefab, cardSpawnPosition, Quaternion.identity);
         }
 
-        OnGuardDeath?.Invoke(); // Notify listeners (e.g., PlayerScript)
+        OnGuardDeath?.Invoke(); 
     }
 }
