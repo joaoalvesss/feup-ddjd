@@ -37,6 +37,12 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
+        if (PasswordPrompt.isPasswordPanelOpen) 
+        {
+            rb.linearVelocity = Vector2.zero; // Stop movement
+            return; // Ignore movement input
+        }
+        
         float moveInput = 0f;
         if (Input.GetKey(KeyCode.D)) moveInput = 1f;
         if (Input.GetKey(KeyCode.A)) moveInput = -1f;
