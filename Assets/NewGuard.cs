@@ -19,10 +19,13 @@ public class GuardAI : MonoBehaviour
 
     public GameObject cardPrefab;
 
+    private Animator animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
+        animator = GetComponent<Animator>();
 
         patrolPointA = pointA.position;
         patrolPointB = pointB.position;
@@ -43,16 +46,24 @@ public class GuardAI : MonoBehaviour
         {
             ChasePlayer();
         }
+
+	animator.SetBool("isChasing", chasingPlayer);
     }
 
     void Patrol()
     {
         transform.position = Vector2.MoveTowards(transform.position, targetPoint, speed * Time.deltaTime);
 
+        // Determine if we need to flip
+        if ((targetPoint.x > transform.position.x && transform.localScale.x < 0) ||
+            (targetPoint.x < transform.position.x && transform.localScale.x > 0))
+        {
+            FlipGuard();
+        }
+
         if (Vector2.Distance(transform.position, targetPoint) < 2f)
         {   
             targetPoint = targetPoint == patrolPointA ? patrolPointB : patrolPointA;
-            FlipGuard();
         }
     }
 
@@ -67,13 +78,23 @@ public class GuardAI : MonoBehaviour
 
     void ChasePlayer()
     {
+        Vector2 direction = (player.position - transform.position).normalized;
+
+        // Move towards the player
         transform.position = Vector2.MoveTowards(transform.position, player.position, speed * 1.2f * Time.deltaTime);
-        
+    
+        // Flip the guard if moving in the opposite direction
+        if ((direction.x > 0 && transform.localScale.x < 0) || (direction.x < 0 && transform.localScale.x > 0))
+        {
+            FlipGuard();
+        }
+
+        // Stop chasing if player is too far
         if (Vector2.Distance(transform.position, player.position) > detectionRange + 2f)
         {
             chasingPlayer = false; 
         }
-    }
+}
 
     void FlipGuard()
     {

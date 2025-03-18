@@ -56,7 +56,8 @@ public class UIManager : MonoBehaviour
 
     public int GetFinalScore()
     {
-        return currentScore;
+	int lifeBonus = Mathf.CeilToInt(PlayerHealth.FindAnyObjectByType<PlayerHealth>().GetRemainingLives()) * 200;
+        return currentScore + Mathf.FloorToInt(600000 / Timer.Instance.GetElapsedTime()) + lifeBonus;
     }
 
     public void ShowGameOver()

@@ -48,4 +48,9 @@ public class PlayerHealth : MonoBehaviour
         gameObject.SetActive(true); 
         Debug.Log("Health Reset: " + currentLives);
     }
+
+    public float GetRemainingLives()
+    {
+        return currentLives;
+    }
 }
