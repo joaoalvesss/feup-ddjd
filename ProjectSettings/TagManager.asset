@@ -12,6 +12,7 @@ TagManager:
   - Guard
   - StickyNote
   - Card
+  - Locker
   layers:
   - Default
   - TransparentFX

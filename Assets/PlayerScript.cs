@@ -24,6 +24,9 @@ public class PlayerScript : MonoBehaviour
     public GameObject bulletPrefab; 
     public Transform shootPoint; 
 
+    public bool isHiding = false;
+    private GameObject currentLocker = null;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -74,6 +77,20 @@ public class PlayerScript : MonoBehaviour
         {
             PickUpCard();
         }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+	    Debug.Log("E pressed");
+            if (isHiding)
+            {
+		Debug.Log("Exiting Locker");
+                ExitLocker();
+            }
+            else if (currentLocker != null)
+            {
+		Debug.Log("Entering Locker");
+                HideInLocker();
+            }
+        }
     }
 
     void Flip()
@@ -116,6 +133,11 @@ public class PlayerScript : MonoBehaviour
 		StartCoroutine(WaitForDeathAnimation());
             }
         }
+        else if (other.CompareTag("Locker"))
+        {
+            currentLocker = other.gameObject;
+            Debug.Log("Press E to hide in the locker.");
+        }
     }
 
     private IEnumerator WaitForDeathAnimation()
@@ -145,6 +167,10 @@ public class PlayerScript : MonoBehaviour
         else if (other.CompareTag("Card"))
         {
             nearbyCard = null; 
+        }
+        else if (other.CompareTag("Locker"))
+        {
+            currentLocker = null;
         }
     }
 
@@ -232,5 +258,22 @@ public class PlayerScript : MonoBehaviour
         {
             cardIcon.gameObject.SetActive(false);
         }
+    }
+
+    void HideInLocker()
+    {
+        isHiding = true;
+        rb.linearVelocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Kinematic; 
+        GetComponent<SpriteRenderer>().enabled = false; // Hide player
+        rb.simulated = false; 
+    }
+
+    void ExitLocker()
+    {
+        isHiding = false;
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        GetComponent<SpriteRenderer>().enabled = true; // Show player
+        rb.simulated = true; 
     }
 }

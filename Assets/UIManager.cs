@@ -71,8 +71,7 @@ public class UIManager : MonoBehaviour
     public void RetryGame()
     {
         gameOverUI.SetActive(false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        StartCoroutine(ResetPlayerHealth());
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     private IEnumerator ResetPlayerHealth()

@@ -68,6 +68,11 @@ public class GuardAI : MonoBehaviour
 
     void CheckForPlayer()
     {
+        if (player.GetComponent<PlayerScript>().isHiding)
+        {
+            chasingPlayer = false;
+            return;
+        }
         RaycastHit2D hit = Physics2D.Raycast(transform.position, player.position - transform.position, detectionRange, playerLayer);
         if (hit.collider != null && hit.collider.CompareTag("Player"))
         {
@@ -77,6 +82,11 @@ public class GuardAI : MonoBehaviour
 
     void ChasePlayer()
     {
+	if (player.GetComponent<PlayerScript>().isHiding)
+        {
+            chasingPlayer = false;
+            return;
+        }
         Vector2 direction = (player.position - transform.position).normalized;
 
         transform.position = Vector2.MoveTowards(transform.position, player.position, speed * 1.2f * Time.deltaTime);
@@ -90,7 +100,7 @@ public class GuardAI : MonoBehaviour
         {
             chasingPlayer = false; 
         }
-}
+    }
 
     void FlipGuard()
     {
