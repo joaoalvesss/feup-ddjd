@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 959946174724b354eb91cb346ba0c5a9
+guid: f7008234d3ab12644bd4f4a75ee105ec
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2799455173491641090
-    second: lunch_0
+      213: 6413412776702920840
+    second: lunch2_0
   - first:
-      213: 4356573489023148054
-    second: lunch_1
+      213: 9086674804435288059
+    second: lunch2_1
   - first:
-      213: 3336581714712550003
-    second: lunch_2
+      213: 9035953983314264550
+    second: lunch2_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,7 +119,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lunch_0
+      name: lunch2_0
       rect:
         serializedVersion: 2
         x: 64
@@ -134,14 +134,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ef4b6631a565629d0800000000000000
-      internalID: -2799455173491641090
+      spriteID: 8884451d0f4010950800000000000000
+      internalID: 6413412776702920840
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lunch_1
+      name: lunch2_1
       rect:
         serializedVersion: 2
         x: 203
@@ -156,14 +156,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 610eb139188a57c30800000000000000
-      internalID: 4356573489023148054
+      spriteID: bff7bd3679a5a1e70800000000000000
+      internalID: 9086674804435288059
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lunch_2
+      name: lunch2_2
       rect:
         serializedVersion: 2
         x: 0
@@ -178,8 +178,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 37a518d346bed4e20800000000000000
-      internalID: 3336581714712550003
+      spriteID: 6e10936f548266d70800000000000000
+      internalID: 9035953983314264550
       vertices: []
       indices: 
       edges: []
@@ -188,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -197,10 +197,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      lunch_0: -2799455173491641090
-      lunch_1: 4356573489023148054
-      lunch_2: 3336581714712550003
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
