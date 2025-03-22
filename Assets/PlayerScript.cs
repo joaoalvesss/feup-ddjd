@@ -17,15 +17,17 @@ public class PlayerScript : MonoBehaviour
     private GameObject nearbyStickyNote = null;
     private GameObject nearbyCard = null;
     private bool hasCard = false;
-
     public Image weaponIcon; 
     public Text weaponText;
     public Image cardIcon; 
     public GameObject bulletPrefab; 
     public Transform shootPoint; 
-
     public bool isHiding = false;
     private GameObject currentLocker = null;
+    public Image item1Icon;
+    public Image item2Icon;
+    public Image item3Icon;
+
 
     void Start()
     {
@@ -125,12 +127,12 @@ public class PlayerScript : MonoBehaviour
         {
             if (TryGetComponent<PlayerHealth>(out var playerHealth))
             {
-		animator.SetTrigger("Die"); // Play death animation
-                rb.linearVelocity = Vector2.zero; // Stop movement
-                rb.bodyType = RigidbodyType2D.Kinematic; // Disable physics movement
-                this.enabled = false;
-		transform.position = new Vector2(transform.position.x, transform.position.y - 1.5f);
-		StartCoroutine(WaitForDeathAnimation());
+                animator.SetTrigger("Die");
+                        rb.linearVelocity = Vector2.zero;
+                        rb.bodyType = RigidbodyType2D.Kinematic; 
+                        this.enabled = false;
+                transform.position = new Vector2(transform.position.x, transform.position.y - 1.5f);
+                StartCoroutine(WaitForDeathAnimation());
             }
         }
         else if (other.CompareTag("Locker"))
@@ -142,8 +144,7 @@ public class PlayerScript : MonoBehaviour
 
     private IEnumerator WaitForDeathAnimation()
     {
-        // Wait for a few seconds before transitioning to Game Over
-        yield return new WaitForSeconds(0.7f); // Adjust time as needed (e.g., 2 seconds)
+        yield return new WaitForSeconds(0.7f); 
 
 	PlayerHealth playerHealth = GetComponent<PlayerHealth>();
         playerHealth.TakeDamage(3);
@@ -253,7 +254,6 @@ public class PlayerScript : MonoBehaviour
 
     public void DropCard()
     {
-        // hasCard = false;
         if (cardIcon != null)
         {
             cardIcon.gameObject.SetActive(false);
@@ -265,7 +265,7 @@ public class PlayerScript : MonoBehaviour
         isHiding = true;
         rb.linearVelocity = Vector2.zero;
         rb.bodyType = RigidbodyType2D.Kinematic; 
-        GetComponent<SpriteRenderer>().enabled = false; // Hide player
+        GetComponent<SpriteRenderer>().enabled = false; 
         rb.simulated = false; 
     }
 
@@ -273,7 +273,34 @@ public class PlayerScript : MonoBehaviour
     {
         isHiding = false;
         rb.bodyType = RigidbodyType2D.Dynamic;
-        GetComponent<SpriteRenderer>().enabled = true; // Show player
+        GetComponent<SpriteRenderer>().enabled = true; 
         rb.simulated = true; 
     }
+
+    public void ShowCollectibleIcon(CollectibleType type)
+    {
+        switch (type)
+        {
+            case CollectibleType.Item1:
+                Debug.Log("Showing icon for Item1");
+                if (item1Icon != null) item1Icon.gameObject.SetActive(true);
+                break;
+            case CollectibleType.Item2:
+                Debug.Log("Showing icon for Item2");
+                if (item2Icon != null) item2Icon.gameObject.SetActive(true);
+                break;
+            case CollectibleType.Item3:
+                Debug.Log("Showing icon for Item3");
+                if (item3Icon != null) item3Icon.gameObject.SetActive(true);
+                break;
+        }
+    }
+    public void HideAllCollectibleIcons()
+    {
+        if (item1Icon != null) item1Icon.gameObject.SetActive(false);
+        if (item2Icon != null) item2Icon.gameObject.SetActive(false);
+        if (item3Icon != null) item3Icon.gameObject.SetActive(false);
+    }
+
+
 }

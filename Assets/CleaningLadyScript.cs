@@ -67,6 +67,13 @@ public class CleaningLady : MonoBehaviour
     {
         Debug.Log("Player received the special object from the cleaning lady!");
 
-	    CollectibleManager.Instance.GetKey();
+        CollectibleManager.Instance.GetKey();
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null && player.TryGetComponent<PlayerScript>(out var playerScript))
+        {
+            playerScript.HideAllCollectibleIcons();
+        }
     }
+
 }

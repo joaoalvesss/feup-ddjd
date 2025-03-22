@@ -21,7 +21,7 @@ public class Collectible : MonoBehaviour
     private void Collect()
     {
         Debug.Log("Collectible picked up!");
-	UIManager.Instance.AddScore(500);
+	    UIManager.Instance.AddScore(500);
         Destroy(gameObject); 
     }
 
