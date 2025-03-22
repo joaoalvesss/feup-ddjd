@@ -38,11 +38,6 @@ public class CollectibleManager : MonoBehaviour
 
             StartCoroutine(HideMessageAfterDelay());
 
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null && player.TryGetComponent<PlayerScript>(out var playerScript))
-            {
-                playerScript.ShowLunchIcon();
-            }
 
         }
     }
@@ -56,6 +51,12 @@ public class CollectibleManager : MonoBehaviour
             unlockableItemText.gameObject.SetActive(false);
         }
         collectedCount++;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null && player.TryGetComponent<PlayerScript>(out var playerScript))
+        {
+            playerScript.ShowLunchIcon();
+            playerScript.HideAllCollectibleIcons();
+        }
         Debug.Log("Used unlockable item! Count is now: " + collectedCount);
     }
 
