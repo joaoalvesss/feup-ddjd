@@ -73,6 +73,7 @@ public class CleaningLady : MonoBehaviour
         if (player != null && player.TryGetComponent<PlayerScript>(out var playerScript))
         {
             playerScript.HideAllCollectibleIcons();
+            playerScript.HideLunchIcon();
         }
     }
 

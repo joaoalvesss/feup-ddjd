@@ -27,6 +27,7 @@ public class PlayerScript : MonoBehaviour
     public Image item1Icon;
     public Image item2Icon;
     public Image item3Icon;
+    public Image lunchIcon;
 
 
     void Start()
@@ -300,6 +301,16 @@ public class PlayerScript : MonoBehaviour
         if (item1Icon != null) item1Icon.gameObject.SetActive(false);
         if (item2Icon != null) item2Icon.gameObject.SetActive(false);
         if (item3Icon != null) item3Icon.gameObject.SetActive(false);
+    }
+
+    public void ShowLunchIcon()
+    {
+        if (lunchIcon != null) lunchIcon.gameObject.SetActive(true);
+    }
+
+    public void HideLunchIcon()
+    {
+        if (lunchIcon != null) lunchIcon.gameObject.SetActive(false);
     }
 
 

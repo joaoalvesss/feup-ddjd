@@ -33,7 +33,7 @@ Installation is not required. Instead, follow the steps below:
 
 ### PowerUps & Items
 - **Weapons**: Temporary ranged defense (banana gun)
-- **Collectibles**: Visually tracked in the UI once picked
+- **Collectibles**: Visually tracked in the UI once picked, give more final score if collected
 - **Keycard**: Grants access to restricted zones
 
 ### Controls

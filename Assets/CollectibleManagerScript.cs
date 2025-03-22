@@ -8,8 +8,7 @@ public class CollectibleManager : MonoBehaviour
 
     private int collectedCount = 0;
     public int CollectedCount => collectedCount;
-
-    public Text unlockableItemText; // Assign this in Unity
+    public Text unlockableItemText; 
 
     private void Awake()
     {
@@ -32,19 +31,25 @@ public class CollectibleManager : MonoBehaviour
     {
         if (collectedCount == 3) 
         {
-	    // Show text and start delay
             if (unlockableItemText != null)
             {
                 unlockableItemText.gameObject.SetActive(true);
             }
 
             StartCoroutine(HideMessageAfterDelay());
+
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null && player.TryGetComponent<PlayerScript>(out var playerScript))
+            {
+                playerScript.ShowLunchIcon();
+            }
+
         }
     }
 
     private IEnumerator HideMessageAfterDelay()
     {
-        yield return new WaitForSeconds(3f); // Wait for 3 seconds
+        yield return new WaitForSeconds(3f); 
         
         if (unlockableItemText != null)
         {
