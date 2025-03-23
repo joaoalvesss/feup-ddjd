@@ -1,6 +1,10 @@
 
 # "MiniX Heist"
 
+## Executable
+
+Inside of the builds folder there is the executable named **MiniX Heist.exe**.
+
 ## About
 MiniX Heist is a platformer game developed as part of the preliminary project of the Digital Games Design and Development course.
 
