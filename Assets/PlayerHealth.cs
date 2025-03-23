@@ -17,9 +17,11 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnEnable()
     {
-        UIManager.Instance.UpdateLives(currentLives); 
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.UpdateLives(currentLives); 
+        }
     }
-
 
     public void TakeDamage(float damage)
     {

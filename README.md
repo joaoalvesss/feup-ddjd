@@ -12,7 +12,7 @@ MiniX Heist is a platformer game developed as part of the preliminary project of
 
 Installation is not required. Instead, follow the steps below:
 
-1. Locate the (link para o sitio onde está o zip no git) and extract its contents.
+1. Locate the DDJD-PP-G08-MiniX Heist-game.zip and extract its contents.
 2. Double click on the MiniXHeist.exe file to run the game.
 
 ---
